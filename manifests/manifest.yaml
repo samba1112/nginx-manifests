@@ -11,13 +11,31 @@ spec:
   selector:
     app: nginx
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: preview-my-nginx-svc
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: nginx
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: my-nginx
   labels:
     app: nginx
 spec:
+  strategy:
+    blueGreen:
+      activeService: my-nginx-svc
+      previewService: preview-my-nginx-svc
+      
   replicas: 2
   selector:
     matchLabels:
