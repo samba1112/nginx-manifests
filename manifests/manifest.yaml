@@ -35,6 +35,9 @@ spec:
     blueGreen:
       activeService: my-nginx-svc
       previewService: preview-my-nginx-svc
+      autoPromotionEnabled: true
+      autoPromotionSeconds: 180
+      
       
   replicas: 2
   selector:
