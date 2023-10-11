@@ -6,7 +6,7 @@ metadata:
   name: my-nginx-svc
   labels:
     app: nginx
-    test: s
+    test: tt
 spec:
   type: LoadBalancer
   ports:
