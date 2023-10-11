@@ -6,7 +6,7 @@ metadata:
   name: my-nginx-svc
   labels:
     app: nginx
-    test: m
+    test: s
 spec:
   type: LoadBalancer
   ports:
@@ -35,6 +35,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14.0
+        image: nginx:1.14.0-
         ports:
         - containerPort: 80
